@@ -1,0 +1,118 @@
+/* Table of Contents
+––––––––––––––––––––––––––––––––––––––––––––––
+- General Content
+- Typography
+- Header & Navigation
+- Images & Media
+- Footer
+- Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* General Content
+–––––––––––––––––––––––––––––––––––––––––––––– */
+.main{
+	padding-top:3%;
+	background-color: #FDF3E7;
+	
+}
+.row{padding: 2% 0;}
+.voilet{background-color:#2B2B2B;}
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––– */
+body{
+	font-family: 'Abel',sans-serif;
+	font-size: 1.5em;
+	color: #000;
+}
+h2{
+	font-family: 'Abel',sans-serif;
+	font-size: 2em;
+	margin: 0.67em;
+}
+h2.bio{color:#C63D0F;}
+p.bio{color: #FDF3E7;}
+
+/* Header & Navigation
+–––––––––––––––––––––––––––––––––––––––––––––– */
+header.main_nav{
+	padding: 1% 0;
+	display: block;
+}	
+header.main_nav{
+	display: block;
+}
+.logo{
+	margin: 5% auto;
+	text-align: center;
+}
+.logo i{
+	font-size: 3em;
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Exo 2', sans-serif;
+	font-style: normal;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+	margin: 0;
+}
+.logo i:hover{
+	background-color: #FDF3E7;
+	color: #2B2B2B;
+	border-color: #2B2B2B;
+}
+
+.navtop{
+	padding: 0;
+}
+
+/* Images & Media
+–––––––––––––––––––––––––––––––––––––––––––––– */
+img{max-width: 100%;}
+img.avatar{
+	border-radius: 400px;
+	border: 5px solid #fff;
+}
+img:hover{opacity:0.8;}
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––– */
+ul.social{
+	display: block;
+	margin: 5% 0;
+	list-style-type: none;
+	text-align: center;
+}
+ul.social li{
+	font-size: 3em;
+	display: inline;
+	padding: 0 2%;
+}
+ul.social li a{
+	color: #666;
+}
+ul.social li.facebook a:hover{color: rgb(59,89,152);}
+ul.social li.twitter a:hover{color: rgb(0,172,237);}
+ul.social li.instagram a:hover{color: rgb(81,127,237);}
+ul.social li.youtube a:hover{color: rgb(187,0,0);}
+ul.social li.flickr a:hover{color: rgb(255,0, 132);}
+ul.social li.linkedin a:hover{color: rgb(0, 123,182);}
+
+p.copyright{
+	text-align: center;
+	color: #666;
+	font-size: 1em;
+}
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––– */
+/* Larger than mobile */
+@media (max-width: 479px) {
+	.logo a{font-size: 2em;}
+	.main{padding-top:15%;}
+	.portfolio img{margin-bottom: 10%;}
+	img.avatar{margin-top: 15%;}
+	h2.bio{font-size: 2.5em;}
+	p.bio{font-size: 1.25em;color: #3f7f7c;}
+	ul.social li a{font-size: .75em;}
+}

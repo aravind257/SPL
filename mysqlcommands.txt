@@ -1,0 +1,2 @@
+create table users(oracleid integer(6) primary key,username varchar(6));
+create table players(playerid integer(3) primary,name varchar(20),bopoints integer(4),bapoints(4));

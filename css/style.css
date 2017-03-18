@@ -1,29 +1,50 @@
 /*Basic styling of the SPL pages*/
 
 body {
-	background: #eee !important;	
+	background: #FDF3E7 !important;	
 }
 
 .wrapper {	
+	background-image: Url='C:\wamp\www\SPL\images\sunset_beach.jpg';
 	padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 100px;
+    margin-top: 50px;
+	margin-bottom: 100px;
 }
 
 .form-signin {
-  max-width: 380px;
-  padding: 15px 35px 45px;
+  max-width: 300px;
+  padding: 15px 15px 15px;
   margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
+  background-color: #FDF3E7;
+}
 
-  .form-signin-heading,
-	.checkbox {
-	  margin-bottom: 30px;
-	}
+.bio{
+	font-family: 'Satisfy',cursive;
+}
+.form-signin-heading{
+	text-align: center;
+	font-family: 'Courgette',cursive;
+}
 
+.currentteam ,.newteam p{
+	font-family: 'Courgette',cursive;
+	font-size: 25px;
+}
+
+.newteam.dropdown{
+	padding: 15px 15px 15px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	
+}
+
+.currentteam table{
+	font-family: 'Able',sans-serif;
+	font-size: 18px;
+}
 	.checkbox {
 	  font-weight: normal;
 	}
@@ -40,8 +61,9 @@ body {
 		}
 	}
 
+
 	input[type="text"] {
-	  margin-bottom: -1px;
+	  margin-bottom: 20px;
 	  border-bottom-left-radius: 0;
 	  border-bottom-right-radius: 0;
 	}
@@ -51,4 +73,12 @@ body {
 	  border-top-left-radius: 0;
 	  border-top-right-radius: 0;
 	}
+}
+
+.footer{
+	clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
 }
