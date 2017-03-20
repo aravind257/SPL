@@ -104,7 +104,6 @@ $_SESSION["username"]=$query["username"];
 
 if($query){
 	header("Location: mainpage.php");
-	die();
 }
 else
 	echo "<script>alert('Cannot find such a user.');</script>";

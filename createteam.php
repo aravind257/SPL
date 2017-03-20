@@ -29,12 +29,14 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css.map">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
-
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!--Javascript Files-->
 	<script type="text/javascript" src="js/bootstrap.js"></script>	
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/npm.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	
   
 </head>
@@ -59,44 +61,69 @@
 				<li><a href="createteam.php">Create Team </a></li>
 				<li><a href="pastscores.php">Past Scores</a></li>
 			  </ul>
-			  <!--<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			  </form>-->
+
 			  <ul class="nav navbar-nav navbar-right">
-				<!-- <li><a href="#">Link</a></li>
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-				  <ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-				  </ul>
-				</li> -->
+
 			  </ul>
 		  </div><!-- /.container-fluid -->
 		</nav>
 	</div>
 	</header>
 	
-	
+	<!--Getting user name from session -->
+	<?php session_start();
+			  $username = $_SESSION["username"]; ?>
 	<div class="container main">
 		<div class="twelve columns">
 			<div class="newteam">
-				<p>Create Your Team<br>Please submit after selecting all players.</p>
-				
+				<p>Create Your Team<br></p><p class = bg-primary>You need to select 3 batsmen, 3 bowlers and 2 all rounders<br>Please submit after selecting all players.</p>
+				<p>All the best <?php echo $username?>!!</p>
+<?php		
+	require 'functions.php';  
+	$con = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	if($con){
+		$sql1 = "select * from players where p_type=0 OR p_type = 1;";
+		$sql2 = "select * from players where p_type=2;";
+		$sql3 = "select * from players where p_type=3;";
+		$bowlers=mysqli_query($con,$sql2);
+		$allrounders=mysqli_query($con,$sql3);
+	}
+?>
+			<div class="container">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+				  <!-- Modal -->
+				  <div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+					
+					  <!-- Modal content-->
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal">&times;</button>
+						  <h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+						  <p>Some text in the modal.</p>
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					  </div>
+					  
+					</div>
+				  </div>
+			</div>  
+
 				<div class="dropdown">
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 1
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-					  
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$batsmen=mysqli_query($con,$sql1);
+						while ($row = mysqli_fetch_array($batsmen)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 			
@@ -104,19 +131,25 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 2
 					<span class="caret"></span></button>
 					<ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
-					</ul>
+					  <?php
+						$batsmen=mysqli_query($con,$sql1);
+						while ($row = mysqli_fetch_array($batsmen)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
+					  </ul>
 				</div>
 					
 				<div class="dropdown">
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 3
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$batsmen=mysqli_query($con,$sql1);
+						while ($row = mysqli_fetch_array($batsmen)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 				
@@ -124,9 +157,12 @@
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 1
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$bowlers=mysqli_query($con,$sql2);
+						while ($row = mysqli_fetch_array($bowlers)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 				
@@ -134,9 +170,12 @@
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 2
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$bowlers=mysqli_query($con,$sql2);
+						while ($row = mysqli_fetch_array($bowlers)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 				
@@ -144,9 +183,12 @@
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 3
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$bowlers=mysqli_query($con,$sql2);
+						while ($row = mysqli_fetch_array($bowlers)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 				
@@ -154,9 +196,12 @@
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Rounder 1
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$allrounders=mysqli_query($con,$sql3);
+						while ($row = mysqli_fetch_array($allrounders)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 				
@@ -164,9 +209,12 @@
 					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Rounder 2
 					  <span class="caret"></span></button>
 					  <ul class="dropdown-menu">
-						<li><a href="#">HTML</a></li>
-						<li><a href="#">CSS</a></li>
-						<li><a href="#">JavaScript</a></li>
+					  <?php
+						$allrounders=mysqli_query($con,$sql3);
+						while ($row = mysqli_fetch_array($allrounders)) {
+							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
+						}
+						?>
 					  </ul>
 				</div>
 			</div>
@@ -177,6 +225,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
 <script>
+
 	$(document).ready(function() {
 		$("a.dropdown-toggle").click(function(ev) {
 			$("a.dropdown-toggle").dropdown("toggle");

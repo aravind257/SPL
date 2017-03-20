@@ -90,9 +90,8 @@
 			die();
 		}
 		else{
-			$username=$_SESSION["username"];
+			$username = $_SESSION["username"];
 		}
-		session_destroy();
 	?>
 	<div class="container main">
 		<div class="twelve columns">
