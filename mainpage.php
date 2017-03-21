@@ -59,6 +59,7 @@
 				<li><a href="mainpage.php">Home </a></li>
 				<li><a href="createteam.php">Create Team </a></li>
 				<li><a href="pastscores.php">Past Scores</a></li>
+				<li><a href="logout.php">Past Scores</a></li>
 			  </ul>
 			  <!--<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">

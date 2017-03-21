@@ -76,150 +76,98 @@
 	<div class="container main">
 		<div class="twelve columns">
 			<div class="newteam">
-				<p>Create Your Team<br></p><p class = bg-primary>You need to select 3 batsmen, 3 bowlers and 2 all rounders<br>Please submit after selecting all players.</p>
-				<p>All the best <?php echo $username?>!!</p>
-<?php		
-	require 'functions.php';  
-	$con = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	if($con){
-		$sql1 = "select * from players where p_type=0 OR p_type = 1;";
-		$sql2 = "select * from players where p_type=2;";
-		$sql3 = "select * from players where p_type=3;";
-		$bowlers=mysqli_query($con,$sql2);
-		$allrounders=mysqli_query($con,$sql3);
-	}
-?>
-			<div class="container">
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+				<p> Create Your Team<br></p><p class = bg-primary> You need to select 3 batsmen, 3 bowlers and 2 all rounders<br> Please submit after selecting all players.</p>
+				<p> All the best <?php echo $username?>!!</p>
+	<?php		
+		require 'functions.php';  
+		$con = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+		if($con){
+			$sql1 = "select * from players where p_type=0 OR p_type = 1;";
+			$sql2 = "select * from players where p_type=2;";
+			$sql3 = "select * from players where p_type=3;";
+			$bowlers=mysqli_query($con,$sql2);
+			$allrounders=mysqli_query($con,$sql3);
+		}
+	?>
+			<div class="four columns">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select Batsmen</button>
 
 				  <!-- Modal -->
-				  <div class="modal fade" id="myModal" role="dialog">
+				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
 					
 					  <!-- Modal content-->
-					  <div class="modal-content">
-						<div class="modal-header">
-						  <button type="button" class="close" data-dismiss="modal">&times;</button>
-						  <h4 class="modal-title">Modal Header</h4>
+						<div class="modal-content">
+							<div class="modal-header">
+							  <button type="button" class="close" data-dismiss="modal">&times;</button>
+							  <h4 class="modal-title">Select Batsmen</h4>
+							</div>
+							<div class="modal-body">
+							  <p id="checkid">Some text in the modal.</p>
+							</div>
+							<div class="modal-footer">
+							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
 						</div>
-						<div class="modal-body">
-						  <p>Some text in the modal.</p>
-						</div>
-						<div class="modal-footer">
-						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
-					  </div>
 					  
 					</div>
-				  </div>
-			</div>  
+				</div>
+			</div>	
+				<!--For Bowlers-->
+			<div class="four columns">	
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select Bowlers</button>
 
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 1
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$batsmen=mysqli_query($con,$sql1);
-						while ($row = mysqli_fetch_array($batsmen)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-			
-				<div class="dropdown">
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 2
-					<span class="caret"></span></button>
-					<ul class="dropdown-menu">
-					  <?php
-						$batsmen=mysqli_query($con,$sql1);
-						while ($row = mysqli_fetch_array($batsmen)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
+				  <!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
 					
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Batsman 3
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$batsmen=mysqli_query($con,$sql1);
-						while ($row = mysqli_fetch_array($batsmen)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 1
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$bowlers=mysqli_query($con,$sql2);
-						while ($row = mysqli_fetch_array($bowlers)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 2
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$bowlers=mysqli_query($con,$sql2);
-						while ($row = mysqli_fetch_array($bowlers)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Bowler 3
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$bowlers=mysqli_query($con,$sql2);
-						while ($row = mysqli_fetch_array($bowlers)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Rounder 1
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$allrounders=mysqli_query($con,$sql3);
-						while ($row = mysqli_fetch_array($allrounders)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
-				</div>
-				
-				<div class="dropdown">
-					  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Rounder 2
-					  <span class="caret"></span></button>
-					  <ul class="dropdown-menu">
-					  <?php
-						$allrounders=mysqli_query($con,$sql3);
-						while ($row = mysqli_fetch_array($allrounders)) {
-							echo "<li><a href='#'>" . $row['p_name'] . "</a></li>";
-						}
-						?>
-					  </ul>
+					  <!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+							  <button type="button" class="close" data-dismiss="modal">&times;</button>
+							  <h4 class="modal-title">Select Batsmen</h4>
+							</div>
+							<div class="modal-body">
+							  <p id="checkid">Some text in the modal.</p>
+							</div>
+							<div class="modal-footer">
+							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					  
+					</div>
 				</div>
 			</div>
+				<!--For all rounders-->
+			<div class="four columns">		
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Select All Rounders</button>
+
+				  <!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+					
+					  <!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+							  <button type="button" class="close" data-dismiss="modal">&times;</button>
+							  <h4 class="modal-title">Select Batsmen</h4>
+							</div>
+							<div class="modal-body">
+							  <p id="checkid">Some text in the modal.</p>
+							</div>
+							<div class="modal-footer">
+							  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					  
+					</div>
+				</div>
+				</div>
+			</div>  
 		</div>
 	</div>
+</div>
+
 </body>
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
